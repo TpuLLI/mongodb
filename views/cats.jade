@@ -1,0 +1,10 @@
+a(href="/cats/new")
+  |Create new cat
+
+- each cat in cats
+  h2
+    a(href="/cats/" + cat._id)
+      = cat.name
+  h3= cat.age
+  p= cat._id
+
