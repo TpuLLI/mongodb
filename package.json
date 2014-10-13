@@ -13,6 +13,7 @@
     "mongoose": "~3.8.17",
     "jade": "~1.7.0",
     "path": "~0.4.9",
-    "body-parser": "~1.9.0"
+    "body-parser": "~1.9.0",
+    "method-override": "~2.2.0"
   }
 }

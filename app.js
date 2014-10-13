@@ -1,6 +1,7 @@
 var express = require("express");
 var path = require("path");
 var bodyParser = require("body-parser");
+var methodOverride = require("method-override")
 var mongoose = require("mongoose");
 
 var app = express();
@@ -12,6 +13,7 @@ app.set("view engine", "jade");
 mongoose.connect("mongodb://localhost/clickganic");
 
 app.use(bodyParser());
+app.use(methodOverride("_method"));
 
 var catSchema = mongoose.Schema({
   name: String,
@@ -45,6 +47,13 @@ app.get("/cats/:id", function(req, res) {
   });
   // console.log(req.params.id);
 });
+
+app.delete("/delete_cat", function(req, res) {
+  Cat.remove({_id: req.body.id}, function(err) {
+    res.redirect("cats");
+  });
+});
+
 
 app.listen(2000, function() {
   console.log("Go!");
